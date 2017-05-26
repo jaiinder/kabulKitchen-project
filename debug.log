@@ -1,0 +1,6 @@
+[0124/185314:ERROR:file_io_win.cc(163)] CreateFile C:\Program Files (x86)\Junemike\Reports\Dump\settings.dat: Access is denied. (0x5)
+[0124/185314:ERROR:registration_protocol_win.cc(82)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0124/185314:ERROR:file_io_win.cc(163)] CreateFile C:\Program Files (x86)\Junemike\Reports\Dump\settings.dat: Access is denied. (0x5)
+[0124/185330:ERROR:file_io_win.cc(163)] CreateFile C:\Program Files (x86)\Junemike\Reports\Dump\settings.dat: Access is denied. (0x5)
+[0124/185330:ERROR:registration_protocol_win.cc(82)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0124/185330:ERROR:file_io_win.cc(163)] CreateFile C:\Program Files (x86)\Junemike\Reports\Dump\settings.dat: Access is denied. (0x5)
