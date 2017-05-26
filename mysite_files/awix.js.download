@@ -1,0 +1,55 @@
+var staticsVersion="1.95.0"; 
+window.AWIX = {};
+
+var setWidgetFullScreenHandler = null;
+window.AWIX.setWidgetFullScreen = function(compId, bgColor, isFullScreen) {
+  Wix.getComponentInfo(function(info){
+    if (info.showOnAllPages !== false) {
+      console.error('setWidgetFullScreen is not supported for widgets that are shown on all pages');
+    } else {
+      if (!setWidgetFullScreenHandler) {
+        //add setTimeout to prevent santa patcher to resize the widget on window resize after our fix to the height (bug fix for ios with floating safari controls)
+        setWidgetFullScreenHandler = function(nav) {
+          if(info.pageId === nav.toPage) {
+            if (isFullScreen) {
+              // setTimeout(function () {
+              //   Wix.setHeight(Math.round(screen.height * (320.0 / screen.width)));
+              // }, 1000);
+            }
+            Wix.PubSub.publish("asdk", {"method": "setWidgetFullScreen", "compId": compId, "bgColor": bgColor, "isFullScreen": isFullScreen}, true);
+            setTimeout(function () {
+              Wix.PubSub.publish("asdk", {"method": "setWidgetFullScreen", "compId": compId, "bgColor": bgColor, "isFullScreen": isFullScreen}, true);
+            }, 2000);
+            setTimeout(function () {
+              Wix.PubSub.publish("asdk", {"method": "setWidgetFullScreen", "compId": compId, "bgColor": bgColor, "isFullScreen": isFullScreen}, true);
+            }, 4000);
+          } else if(info.pageId === nav.fromPage) {
+            Wix.PubSub.publish("asdk", {"method": "setWidgetFullScreen", "compId": compId, "bgColor": bgColor, "isFullScreen": false}, true);
+          }
+        };
+      }
+
+      Wix.PubSub.publish("asdk", {"method": "setWidgetFullScreen", "compId": compId, "bgColor": bgColor, "isFullScreen": isFullScreen}, true);
+      if(isFullScreen) {
+        // setTimeout(function () {
+        //   Wix.setHeight(Math.round(screen.height * (320.0 / screen.width)));
+        // }, 1000);
+        Wix.addEventListener(Wix.Events.PAGE_NAVIGATION, setWidgetFullScreenHandler);
+      } else {
+        if (setWidgetFullScreenHandler) {
+          Wix.removeEventListener(Wix.Events.PAGE_NAVIGATION, setWidgetFullScreenHandler);
+          setWidgetFullScreenHandler = null;
+        }
+      }
+    }
+  });
+};
+
+
+window.AWIX.setWidgetFixedOnBottom = function(compId, isEnabled, height) {
+  Wix.PubSub.publish("asdk", {"method": "setWidgetFixedOnBottom", "compId": compId, "isEnabled": isEnabled, "height": height}, true);
+};
+
+window.AWIX.setWidgetCss = function(compId, css) {
+  Wix.PubSub.publish("asdk", {"method": "setWidgetCss", "compId": compId, "css": css}, true);
+};
