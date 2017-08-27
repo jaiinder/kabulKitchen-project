@@ -1,0 +1,916 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+
+@import url(http://fonts.googleapis.com/css?family=Volkhov:700italic);
+
+
+
+body {
+
+	font: 1em/150% 'Roboto', sans-serif, Arial, Helvetica, sans-serif;
+
+	/*background:#f7f7f7;*/
+
+	/*background:url(images/bg.jpg);*/
+
+	margin:0px;
+
+	padding:0px;
+
+	width: auto !important;
+
+	overflow-x: hidden !important;
+
+}
+
+a {
+
+	color: #669;
+
+	text-decoration: none;
+
+}
+
+a:hover {
+
+	text-decoration: underline;
+
+}
+
+h1 {
+
+	font: bold 36px/100% Arial, Helvetica, sans-serif;
+
+}
+
+
+
+#breadcrumb
+
+{
+
+	border-bottom:1px solid #ccc;
+
+	padding-bottom:3px;
+
+}
+
+
+
+#breadcrumb a
+
+{
+
+	color:#000;
+
+	padding:5px;
+
+	margin-right:10px;
+
+}
+
+.textbox{
+  height:50px;
+  width:100%;
+  border-radius:3px;
+  border:rgba(0,0,0,.3) 2px solid;
+  box-sizing:border-box;
+  padding:10px;
+  margin-bottom:30px;
+}
+
+.textbox:focus{
+  outline:none;
+   border:rgba(24,149,215,1) 2px solid;
+   color:rgba(24,149,215,1);
+}
+
+.button{
+  height:50px;
+  width:100%;
+  border-radius:3px;
+  border:rgba(0,0,0,.3) 0px solid;
+  box-sizing:border-box;
+  padding:10px;
+  margin-bottom:30px;
+  background:#90c843;
+  color:#FFF;
+  font-weight:bold;
+  font-size: 12pt;
+  transition:background .4s;
+  cursor:pointer;
+}
+
+.button:hover{
+  background:#80b438;
+  
+}
+
+td
+{
+vertical-align:top;
+}
+
+
+/************************************************************************************
+
+STRUCTURE
+
+*************************************************************************************/
+
+.container {	
+
+	width: 100%;
+
+}
+
+
+
+#header {
+
+	padding:10px 10px;
+
+	width:1100px;
+
+	margin:0 auto;
+	
+	height:30px;
+
+	z-index:1000;
+
+}
+
+#header a
+{
+	color:#fff;
+}
+
+#logo
+
+{
+
+	float:left;
+
+	
+
+}
+
+#admission_banner
+
+{
+
+	float:right;
+
+}
+
+#header-banner
+
+{
+
+	float:right;
+
+	margin-top:1.2vw;
+
+	width:25%;
+
+}
+
+#complaint_banner
+
+{
+
+	float:right; background:#767575; width:140px; text-align:center; padding:5px; font-size:12px;
+
+}
+
+#homepagebox
+
+	{
+
+	width:29%; height:280px; border-bottom:5px solid #da251d; float:left; padding:15px 10px 20px 10px; 
+
+	}
+
+	
+
+	#homepagebox1
+
+	{
+
+	width:29%; float:left; padding:15px 10px 20px 10px; 
+
+	}
+
+#navigation
+
+{
+
+	width:1100px;
+
+	margin:0 auto;
+	margin-top:-4px;
+
+}
+
+#slider
+
+{
+
+	width:100%;
+
+}
+
+
+
+#about {
+
+	padding:15px 10px;
+
+	overflow:auto;
+
+	width:1100px;
+
+	margin:0 auto;
+	
+	min-height:500px;
+
+}
+
+
+
+#about h2
+
+{
+	margin:0px;
+
+	background:#da251d;
+
+	color:#fff;
+
+	padding:7px;
+
+}
+
+
+
+#content {
+
+	width: 98%;
+
+	float: left;
+
+	padding:1%;
+
+}
+
+#sticker
+
+{
+
+	width:31%; 
+
+	margin-right:3%; 
+
+	float:left;
+
+	margin-bottom:1vw;
+
+}
+
+#sticker1
+
+{
+
+	width:31%; 
+
+	float:left;
+
+	margin-bottom:1vw;
+
+}
+
+/*
+
+#sidebar {
+
+	width: 300px;
+
+	float: right;
+
+}
+
+*/
+
+
+
+#footer-bar {
+
+	padding:15px 10px;
+
+	overflow:auto;
+
+	width:1100px;
+
+	margin:0 auto;
+
+}
+
+
+
+#footer {
+
+	clear: both;
+
+	background:#222222;
+
+	color:#fff;
+
+	padding:.3vw;
+
+	text-align:center;
+
+}
+
+
+
+#cat_div
+
+{
+
+	float:left;
+
+}
+
+
+
+#client_div
+
+{
+
+	float:left;
+
+}
+
+
+
+.shadow {
+
+  -moz-box-shadow:    3px 3px 5px 6px #ccc;
+
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+
+  box-shadow:         3px 3px 5px 6px #ccc;
+
+}
+
+
+
+#read-more-button
+
+{
+
+	background:#fff;
+
+	color:#333333;
+
+	padding:3px 8px;
+
+	margin-top:10px;
+
+	text-decoration:none;
+
+	font-size:14px;
+
+	-webkit-transition: all 500ms ease;
+
+	-moz-transition: all 1000ms ease;
+
+	-ms-transition: all 1000ms ease;
+
+	-o-transition: all 1000ms ease;
+
+	transition: all 1000ms ease;
+
+}
+
+#read-more-button:hover
+
+{
+
+background:#24252b;
+
+color:#fff;
+
+-webkit-transition: all 500ms ease;
+
+-moz-transition: all 500ms ease;
+
+-ms-transition: all 500ms ease;
+
+-o-transition: all 500ms ease;
+
+transition: all 500ms ease;
+
+}
+
+
+
+.round
+
+{
+
+-moz-border-radius: 10px;
+
+-webkit-border-radius: 10px;
+
+border-radius: 10px; /* future proofing */
+
+-khtml-border-radius: 10px; /* for old Konqueror browsers */
+
+}
+
+
+
+/************************************************************************************
+
+MEDIA QUERIES
+
+*************************************************************************************/
+
+/* for 980px or less */
+
+@media screen and (max-width: 980px) {
+
+	
+
+	#header {
+
+		height: auto;
+
+		width:auto;
+
+	}
+
+	h1 {
+
+		font-size: 24px;
+
+	}
+
+	/*
+
+	#sidebar {
+
+		display: none;
+
+	}
+
+	*/
+
+	#logo
+
+	{
+
+		width:auto;
+
+		float:none;
+
+		margin-bottom:1em;
+
+	}
+
+	#admission_banner
+
+	{
+
+		width:auto;
+
+		float:none;
+
+		margin-bottom:1em;
+
+		text-align:center;
+
+	}
+
+	#complaint_banner
+
+	{
+
+		width:auto;
+
+		float:none;
+
+		margin-bottom:1em;
+
+		text-align:center;
+
+		background:#767575; 
+
+		width:140px; 
+
+		padding:5px; 
+
+		font-size:12px;
+
+		margin:0 auto;
+
+	}
+
+	#navigation
+
+	{
+
+		width:auto;
+
+		float:none;
+
+	}
+
+	#cat_div
+
+	{
+
+		width:100%;
+
+		float:none;
+
+	}
+
+	
+
+	#about
+
+	{
+
+		width:auto;
+
+		float:none;
+
+	}
+
+	
+
+	#homepagebox
+
+	{
+
+		width:90%;
+
+		float:none;
+
+		margin:0 auto;
+
+		margin-bottom:1em;
+
+	}
+
+	
+
+	#homepagebox1
+
+	{
+
+		width:90%;
+
+		float:none;
+
+		margin:0 auto;
+
+		margin-bottom:1em;
+
+	}
+
+	
+
+	
+
+	#client_div
+
+	{
+
+		width:auto;
+
+		float:none;
+
+	}
+
+
+
+	#header-banner
+
+	{
+
+		width:auto;
+
+		float:none;
+
+		margin-top:15px;
+
+	}
+
+	#footer-bar {
+
+		width:auto;
+
+		float:none;
+
+	}
+
+	#sticker
+
+	{
+
+		width:auto;
+
+		float:none;
+
+		margin-bottom:1vw;
+
+		text-align:center;
+
+	}
+
+	#sticker1
+
+	{
+
+		width:auto;
+
+		float:none;
+
+		margin-bottom:1vw;
+
+		text-align:center;
+
+	}
+
+
+
+}
+
+
+
+/* for 700px or less */
+
+@media screen and (max-width: 700px) {
+
+
+
+	#content {
+
+		width: auto;
+
+		float: none;
+
+	}
+
+	/*
+
+	#sidebar {
+
+		width: auto;
+
+		float: none;
+
+	}
+
+	*/	
+
+
+
+}
+
+
+
+/* for 480px or less */
+
+@media screen and (max-width: 480px) {
+
+	#header {
+
+		height: auto;
+
+		width:auto;
+
+	}
+
+	h1 {
+
+		font-size: 24px;
+
+	}
+
+	/*
+
+	#sidebar {
+
+		display: none;
+
+	}
+
+	*/
+
+	#logo
+
+	{
+
+		width:auto;
+
+		float:none;
+
+		margin-bottom:1em;
+
+	}
+
+	#admission_banner
+
+	{
+
+		width:auto;
+
+		float:none;
+
+		margin-bottom:1em;
+
+		text-align:center;
+
+	}
+
+	#complaint_banner
+
+	{
+
+		float:none;
+
+		margin-bottom:1em;
+
+		text-align:center;
+
+		background:#767575; 
+
+		width:140px; 
+
+		padding:5px; 
+
+		font-size:12px;
+
+		margin:0 auto;
+
+	}
+
+	#navigation
+
+	{
+
+		width:auto;
+
+		float:none;
+
+	}
+
+	#cat_div
+
+	{
+
+		width:100%;
+
+		float:none;
+
+	}
+
+	
+
+	#about
+
+	{
+
+		width:auto;
+
+		float:none;
+
+	}
+
+	
+
+	#homepagebox
+
+	{
+
+		width:90%;
+
+		float:none;
+
+		margin:0 auto;
+
+		margin-bottom:1em;
+
+	}
+
+	
+
+	
+
+	#client_div
+
+	{
+
+		width:auto;
+
+		float:none;
+
+	}
+
+
+
+	#header-banner
+
+	{
+
+		width:auto;
+
+		float:none;
+
+		margin-top:15px;
+
+	}
+
+	#footer-bar {
+
+		width:auto;
+
+		float:none;
+
+	}
+
+	#sticker
+
+	{
+
+		width:auto;
+
+		float:none;
+
+		margin-bottom:1vw;
+
+		text-align:center;
+
+	}
+
+	#sticker1
+
+	{
+
+		width:auto;
+
+		float:none;
+
+		margin-bottom:1vw;
+
+		text-align:center;
+
+	}
+
+
+
+
+
+}
+
+
+
+/* border & guideline (you can ignore these) */
+
+#content {
+
+	background: #f8f8f8;
+
+}
+
+/*
+
+#sidebar {
+
+	background: #f0efef;
+
+}
+
+*/
+
+#header, #content, #sidebar {
+
+	margin-bottom: 5px;
+
+}
+
+
+
+#pagewrap, #header, #content, #sidebar, #footer {
+
+/*	border: solid 1px #ccc; */
+
+}
+
+
+
+
+
