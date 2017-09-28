@@ -1,4 +1,3 @@
-<?php include("config.php"); ?>
 <!DOCTYPE html>
 <html>
 
@@ -6,9 +5,9 @@
         <meta charset="UTF-8">
         <title>Kabul Kitchen</title>
         <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css" media="screen">
-        <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet'>
-        <link href='http://fonts.googleapis.com/css?family=Playball' rel='stylesheet'>
+        <link rel="stylesheet" href="css/main.css" media="screen" type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/style-portfolio.css">
         <link rel="stylesheet" href="css/picto-foundry-food.css" />
@@ -34,7 +33,7 @@
 
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div>
-                 	<!--<button style="float:right; margin-right:10px; color:Red; background-color:white; border-radius:16px; border:1px solid blue; margin-top:-10px; padding:8px; font-family:Tahoma, Geneva, sans-serif; " ><a href="KK_Admin/admin.php" target="_blank" style=" text-decoration:none;color:Red;"> Admin</a></button>-->
+                 	<button style="float:right; margin-right:10px; color:Red; background-color:white; border-radius:16px; border:1px solid blue; margin-top:-10px; padding:8px; font-family:Tahoma, Geneva, sans-serif; " ><a href="reservation.php" target="_blank" style=" text-decoration:none;color:Red;"> Sign-In</a></button>
             </div>
             <div class="container">
             
@@ -87,7 +86,7 @@
         <section id="story" class="description_content">
             <div class="text-content container">
                 <div class="col-md-6" >
-                    <h1>Why us</h1>
+                    <h1>About us</h1>
                     <div class="fa fa-cutlery fa-2x"></div>
                     <p class="desc-text"> Kabul Kitchen is a place for simplicity. Good food, good beer, and good service. We arrange the birthday parties. This is a place for relax and enjoy your food items. Our kababs, Afgani food and the indian foods are one of the most popular food of brisbane..</p>
                 </div>
@@ -265,53 +264,18 @@
                             <!-- Left Inputs -->
                             <div class="container">
                                 <div class="row">
-								
-								<h2 style="margin-top:-60px;">Now Reserve your Table Online</h2>
-                             
-                                        
-										<?php 
-											$query="select * from tables";
-											$result=db_query($query);
-											while($row=mysqli_fetch_assoc($result))
-											{
-										?>
-                                           <!-- <div class="col-sm-4 col-md-4 col-xs-" style="float:left; padding:20px; background:#ecc; margin:10px;">-->
-                                            <div class="col-sm-4" style="float:left; padding:20px;">
-												
-												
-												
-													<table align="center" style=" border:1px solid #ccc; ">
-														<tr>
-															<td style="padding:10px; margin-top:20px;">
-														<?php
-															
-																echo"<img src='admin/table_img/".$row['tb_img']."' style='max-width:100%;' />","<br>";
-																echo "<p style='margin-top:20px; font-weight:bold;'>", $row['tb_name'],"</p>";
-																echo "<p style='margin:10px 0px; font-size:13px;'> For Person(s) :",$row['tb_person'],"</p>";
-																//echo "<a href='reserve.php?id='".$row['tb_id']."'> <button type='submit' name='submit' style='float:none;'>Book Now</button></a>";
-														?>
-														<a style="text-decoration:none; text-align:center; float:none;" href="reserve.php?id=<?php echo $row['tb_id']; ?>"  class="text-center form-btn form-btn">
-															<!--<button type="submit"  >--> Book Now <!--</button>-->
-														</a>
-															<div style="clear:both;"></div>
-															</td>
-														</tr>
-													</table>
-													
-												
-											</div>
-											<?php
-												}
-											?>
-											   <!-- Name 
+                                    <div class="col-lg-8 col-md-6 col-xs-12">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-xs-6">
+                                                <!-- Name -->
                                                 <input type="text" name="res_fname" id="first_name" required class="form" placeholder="First Name" />
                                                 <input type="text" name="res_lname" id="last_name" required class="form" placeholder="Last Name" />
                                                 <input type="text" name="res_state" id="state" required class="form" placeholder="State" />
-                                                <input type="date" name="res_date" id="datepicker" required class="form" placeholder="Reservation Date" style="line-height:100%;" min="<?php //echo date('Y-m-d'); ?>" />-->
-                                          
+                                                <input type="date" name="res_date" id="datepicker" required class="form" placeholder="Reservation Date" style="line-height:100%;" min="<?php echo date('Y-m-d'); ?>" />
+                                            </div>
 
-											<!--<div class="col-lg-6 col-md-6 col-xs-6">
-                                                
+                                            <div class="col-lg-6 col-md-6 col-xs-6">
+                                                <!-- Name -->
                                                 <input type="text" name="res_phone" id="phone" required class="form" placeholder="Phone" />
                                                 <input type="text" name="res_guest" id="guest" required class="form" placeholder="Guest Number" />
                                                 <input type="email" name="res_email" id="email" required class="form" placeholder="Email" />
@@ -319,22 +283,22 @@
                                             </div>
 
                                             <div class="col-xs-6 ">
-                                                
-                                                <button type="submit" id="submit" name="submit" class="text-center form-btn form-btn">Book now</button> 
-                                            </div>-->
+                                                <!-- Send Button -->
+                                                <button type="submit" id="submit" name="submit" class="text-center form-btn form-btn">Reserve</button> 
+                                            </div>
                                             
-                             
-                                 
+                                        </div>
+                                    </div>
                                     
-                                    <!--<div class="col-lg-4 col-md-6 col-xs-12">
-                                        
+                                    <div class="col-lg-4 col-md-6 col-xs-12">
+                                        <!-- Message -->
                                         <div class="right-text">
                                             <h2>Hours</h2><hr>
                                             <p>Monday to Friday: 7:30 AM - 9:30 PM</p>
                                             <p>Saturday & Sunday: 8:00 AM - 9:00 PM</p>
                                             
                                         </div>
-                                    </div>-->
+                                    </div>
                                 </div>
                             </div>
                             <!-- Clear -->
