@@ -10,15 +10,14 @@
 
 	<div class="container" style="padding:0px 0px;">
 
-	<div id="about">
-
+	<img src="../images/steak.jpg" style="max-width:100%;">
 			
 
 		
 
 		
 
-	</div>
+
 
 	</div>
 

@@ -1,57 +1,20 @@
 <?php
-//must appear BEFORE the <html> tag
 session_start();
-include_once('config.php');	
+include 'config.php';
 
-if( isset($_POST["email"])&& isset($_POST["password"]) )
-{
-	$email = $_POST["email"];
-		
-	$password = $_POST["password"];
-	
-	if ($email && $password)
-	{
-	  // if the user has just tried to log in
-	
-	  //make the database connection
-	  $conn  = db_connect();	
-	  
-	  //make a query to check if user login successfully
-	  $sql = "select * from admin where username='$email' and password='$password'";
-	  $result = $conn -> query($sql);
-	  $numOfRows = $result -> num_rows;
 
-	  if ($numOfRows)
-	  {
-		// login successfully, keep the user's email
-		$_SESSION['valid_user'] = $email;
-	  }
-	  $conn -> close();
-	}
-}
-if (isset($_SESSION['valid_user']))
+$pwd=md5($_REQUEST['pwd']);
+$query = "SELECT user_id FROM user WHERE user_name= '".$_REQUEST['uname']."' AND user_pwd = '".$pwd."'";
+$result = db_query($query);
+$count=mysqli_num_rows($result);
+if($count=='0')
 {
-	$loc=$_SESSION['pagename'];
-  header("location:index_admin.php");
+	header('Location:index.php?error=true');
 }
 else
 {
-  if (isset($email))
-  {
-    // if user tried and failed to log in
-    echo "<b>Incorrect - Please try it again </b><br>";
-  }
-  else 
-  {
-    // user has not tried to log in yet or has logged out
-    echo "<b>You are not logged in</b><br>";
-  }
-
+	$row=mysqli_fetch_assoc($result);
+	$_SESSION['sid']=$row['user_id'];
+	header('Location:myspace.php');
 }
-
 ?>
-
-
-
-
-

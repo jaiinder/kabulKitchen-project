@@ -41,12 +41,18 @@ function body_head()
 			<div id='cssmenu'>
 			<ul>
 			   <li><a href='booking.php'><span>Booking Tables</span></a></li>
-			   <!--<li><a href='customers.php'><span>Registrations</span></a></li>-->
+			   <li><a href='hdorders.php'><span>Home Delivery Orders</span></a></li>
 			   <li class='has-sub'><a href='#'><span>Tables</span></a>
 				  <ul>
 					 <li><a href='addtables.php'><span>Add Table</span></a></li>
 					 <li><a href='managetable.php'><span>Manage Tables</span></a></li>
 				  </ul>
+			   </li>
+			   <li ><a href='managecategory.php'>Menu Category</a>
+				  
+			   </li>
+			   <li><a href='managemenu.php'><span>Menu</span></a>
+				  
 			   </li>
 			   <li class='last'><a href='logout.php'><span>Logout</span></a></li>
 			</ul>

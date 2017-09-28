@@ -22,6 +22,7 @@
 		<td>Email</td>
 		<td>Contact Number</td>
 		<td>Date/Time</td>
+		<td>Menu</td>
 		<!--<td>View</td>-->
 	</tr>
 	
@@ -55,37 +56,19 @@
 		<td><?php echo $row['bk_email']; ?></td>
 		<td><?php echo $row['bk_phone']; ?></td>
 		<td><?php echo $row['bk_addon']; ?></td>
-		<!--<td><a href="booking_view.php?id=<?php //echo $row['bk_id']; ?>" style="border:1px solid #ccc; padding:4px;">View</a></td>-->
 		<td>
-		<!--<a href="order_status.php?num=<?php //echo $row['order_num']; ?>">-->
 		<?php
-		/*$q10="select max(os_sid) from ostatus where os_onum='".$row['order_num']."'";
-		$r10=db_query($q10);
-		$ro10=mysqli_fetch_assoc($r10);
-		
-		$q11="select * from status where sta_id='".$ro10['max(os_sid)']."'";
-		$r11=db_query($q11);
-		$ro11=mysqli_fetch_assoc($r11);
-		
-		echo $ro11['sta_name'];*/
-		?>		
-		<!--<img src="images/edit-button.png" height="14"></a></td>
-		<td>
-		<a href="order_discuss.php?num=<?php //echo $row['order_num']; ?>">Discuss<?php
-		/*$q100="select count(*) from discuss where dis_onum='".$row['order_num']."' and dis_from='2' and dis_status='0'";
-		$r100=db_query($q100);
-		$ro100=mysqli_fetch_assoc($r100);
-		if($ro100['count(*)']>0)
+		if($row['bk_menu']=='Yes')
 		{
-			echo " <span style='color:#f00;'>(".$ro100['count(*)'].")</span>";
+			echo "<a href='booking_menu.php?id=".$row['bk_id']."' style='color:green;'>Yes</a>";
 		}
 		else
 		{
-			echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-		}*/
-		?>
-		</a>
-		</td>-->
+			echo "No";
+		}
+		?>		
+		</td>
+		
 	</tr>
 	<?php
 	}
