@@ -6,9 +6,9 @@
         <meta charset="UTF-8">
         <title>Kabul Kitchen</title>
         <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css" media="screen" type="text/css">
-        <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="css/main.css" media="screen">
+        <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet'>
+        <link href='http://fonts.googleapis.com/css?family=Playball' rel='stylesheet'>
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/style-portfolio.css">
         <link rel="stylesheet" href="css/picto-foundry-food.css" />
@@ -32,7 +32,45 @@
 		}
 		?>
 
-       <?php require('nav.php'); ?>
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div>
+                 	<!--<button style="float:right; margin-right:10px; color:Red; background-color:white; border-radius:16px; border:1px solid blue; margin-top:-10px; padding:8px; font-family:Tahoma, Geneva, sans-serif; " ><a href="KK_Admin/admin.php" target="_blank" style=" text-decoration:none;color:Red;"> Admin</a></button>-->
+            </div>
+            <div class="container">
+            
+                <div class="row">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#" style="margin-top:27px;">Kabul Kitchen</a>
+                        
+                    </div>
+                   
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav main-nav  clear navbar-right ">
+                            <li><a class="navactive color_animation" href="#top">WELCOME</a></li>
+                            <li><a class="color_animation" href="#story">WHY US</a></li>
+                            <li><a class="color_animation" href="#pricing">PRICING</a></li>
+                            
+                    <!--<li><a class="color_animation" href="#beer">BEER</a></li> -->
+                            <li><a class="color_animation" href="#bread">BREAD</a></li>
+                            <li><a class="color_animation" href="#featured">FEATURED</a></li>
+                            <li><a class="color_animation" href="#reservation">RESERVATION</a></li>
+                            <li><a class="color_animation" href="#contact">CONTACT</a></li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div>
+                
+            </div><!-- /.container-fluid -->
+             			
+        </nav>
          
         <div id="top" class="starter_container bg">
             <div class="follow_container">
@@ -49,7 +87,7 @@
         <section id="story" class="description_content">
             <div class="text-content container">
                 <div class="col-md-6" >
-                    <h1>About us</h1>
+                    <h1>Why us</h1>
                     <div class="fa fa-cutlery fa-2x"></div>
                     <p class="desc-text"> Kabul Kitchen is a place for simplicity. Good food, good beer, and good service. We arrange the birthday parties. This is a place for relax and enjoy your food items. Our kababs, Afgani food and the indian foods are one of the most popular food of brisbane..</p>
                 </div>
@@ -116,129 +154,32 @@
                 </div>
             </div>  
         </section>
-		
-		
-		<script type="text/javascript">
-		<?php
-		$query="select * from category ";
-		$result=db_query($query);
-		while($row=mysqli_fetch_assoc($result))
-		{
-		?>
-		function active<?php echo $row['cat_id']; ?>()
-		{
-			<?php
-			$q10="select * from category ";
-			$r10=db_query($q10);
-			while($ro10=mysqli_fetch_assoc($r10))
-			{
-			if($ro10['cat_id']==$row['cat_id'])
-			{
-			?>
-			document.getElementById('cat<?php echo $ro10['cat_id'] ?>').style.display="block";
-			document.getElementById('cathead<?php echo $ro10['cat_id'] ?>').style.backgroundColor="#f00";
-			<?php 
-			}
-			else
-			{
-			?>
-			document.getElementById('cat<?php echo $ro10['cat_id'] ?>').style.display="none";
-			document.getElementById('cathead<?php echo $ro10['cat_id'] ?>').style.backgroundColor="#000";
-			<?php 
-			}
-			} 
-			?>
-		}
-		<?php }?>
-		</script>
-		
-		<style type="text/css">
-		#menu-tbl td
-		{
-			padding:7px;
-		}
-		</style>
+
+
+        <!-- ============ Our Beer  ============= 
+
 
         <section id ="beer" class="description_content">
-		
-		<div class="container" style="z-index:99; padding-top:100px;">
-		<div class="row">
-		
-		<h2 style="margin-bottom:20px;">MENU</h2>
-		
-		<div class="col-sm-3">			
-			<?php
-			$query="select * from category ";
-			$result=db_query($query);
-			while($row=mysqli_fetch_assoc($result))
-			{
-			?>			
-			<a href="#" onClick="active<?php echo $row['cat_id']; ?>();" style="text-decoration:none;">
-			<div id="cathead<?php echo $row['cat_id']; ?>" style="font-size:16px; margin-bottom:10px; text-align:left; background:<?php if($row['cat_id']==1) { echo "#f00"; } else { echo "#000;"; } ?>; color:#fff; padding:5px; font-family:Arial, Helvetica, sans-serif">
-				<?php echo $row['cat_name'];?>
-			</div>
-			</a>
-			<?php } ?>			
-				
-		</div>
-		
-		<div class="col-sm-9">
-			<?php
-			$query="select * from category ";
-			$result=db_query($query);
-			while($row=mysqli_fetch_assoc($result))
-			{
-			?>			
-			<div id="cat<?php echo $row['cat_id']; ?>" style="display:<?php if($row['cat_id']==1) { echo "block"; } else { echo "none;"; } ?>;">
-			<table id="menu-tbl" width="100%" style="font-size:14px;" border="1">					
-			<tr>
-				<td colspan="3"><h3><?php echo $row['cat_name'];?></h3> </td>				
-			</tr>
-			<?php
-				$q10="select * from menu where cat_name='".$row['cat_id']."'";
-				$r10=db_query($q10);
-				while($ro10=mysqli_fetch_assoc($r10))
-				{
-				?>
-				<tr>
-					<td width="30%"><?php echo $ro10['menu_name'];?></td>
-					<td width="55%"><?php echo $ro10['menu_desc'];?></td>
-					<td width="15%" style="font-size:20px; font-style:italic">$ <?php echo $ro10['menu_price'];?></td>
-				</tr>
-				<?php }
-			?>
-			</table>
-			</div>
-			<?php } ?>		
-		</div>
-		
-		<div style="clear:both; height:40px;"></div>
-		
-		<a href="#reservation">
-		<div class="col-sm-5" style="background:#23a002; color:#fff; padding:20px 0px;">
-			RESERVE TABLE WITH MENU SELECTION
-		</div>
-		</a>
-		
-		<div class="col-sm-2">			
-		</div>
-		
-		<a href="homedelivery.php" target="_blank">
-		<div class="col-sm-5" style="background:#23a002; color:#fff; padding:20px 0px;">
-			HOME DELIVERY
-		</div>
-		</a>
-		
-		
-		
-		
-		</div>
-		</div>
-            
-        </section> 
+            <div  class="beer background_content">
+                <h1>Great <span>Place</span> to enjoy</h1>
+            </div>
+            <div class="text-content container"> 
+                <div class="col-md-5">
+                   <div class="img-section">
+                       <img src="images/beer_spec.jpg" width="100%">
+                   </div>
+                </div>
+                <br>
+                <div class="col-md-6 col-md-offset-1">
+                    <h1>OUR BEER</h1>
+                    <div class="icon-beer fa-2x"></div>
+                    <p class="desc-text">Here at Restaurant we’re all about the love of beer. New and bold flavors enter our doors every week, and we can’t help but show them off. While we enjoy the classics, we’re always passionate about discovering something new, so stop by and experience our craft at its best.</p>
+                </div>
+            </div>
+        </section> -->
 
 
-       
+       <!-- ============ Our Bread  ============= -->
 
 
         <section id="bread" class=" description_content">

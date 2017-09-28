@@ -12,29 +12,60 @@
         <link rel="stylesheet" href="css/jquery-ui.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="css/font-awesome.min.css" rel="stylesheet">
-        <link rel="icon" href="favicon-1.ico" type="image/x-icon">	
-		
-<style type="text/css">
-td
-{
-	padding:7px;
-}
-</style>
-
-<script type="text/javascript">
-function menuenable()
-{
-	document.getElementById('menuitems').style.display="block";
-}
-function menudisable()
-{
-	document.getElementById('menuitems').style.display="none";
-}
-
-</script>	
+        <link rel="icon" href="favicon-1.ico" type="image/x-icon">		
 
 
-<?php require('nav.php'); ?>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div>
+                 	<button style="float:right; margin-right:10px; color:Red; background-color:white; border-radius:16px; border:1px solid blue; margin-top:-10px; padding:8px; font-family:Tahoma, Geneva, sans-serif; " ><a href="admin/" target="_blank" style=" text-decoration:none;color:Red;"> Admin</a></button>
+            </div>
+            <div class="container">
+            
+                <div class="row">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="index.php" style="margin-top:27px;">Kabul Kitchen</a>
+                        
+                    </div>
+                   
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav main-nav  clear navbar-right ">
+                            <li><a class="navactive color_animation" href="index.php#top">WELCOME</a></li>
+                            <li><a class="color_animation" href="index.php#story">WHY US</a></li>
+                            <li><a class="color_animation" href="index.php#pricing">PRICING</a></li>
+                            
+                    <!--<li><a class="color_animation" href="#beer">BEER</a></li> -->
+                            <li><a class="color_animation" href="index.php#bread">BREAD</a></li>
+                            <li><a class="color_animation" href="index.php#featured">FEATURED</a></li>
+                            <li><a class="color_animation" href="index.php#reservation">RESERVATION</a></li>
+                            <li><a class="color_animation" href="index.php#contact">CONTACT</a></li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div>
+                
+            </div><!-- /.container-fluid -->
+             			
+        </nav>
+
+ <!--
+ <div id="top" class="starter_container bg">
+            <div class="follow_container">
+                <div class="col-md-6 col-md-offset-3">
+                    <h2 class="top-title"> Kabul Kitchen</h2>
+                    <h2 class="white second-title">" Best in Brisbane "</h2>
+                    <hr>
+                </div>
+            </div>
+ </div>
+ -->
 
  <div class="container" style="z-index:99; margin-top:150px;">
 	<div class="row">
@@ -46,21 +77,73 @@ function menudisable()
  
  
  <div class="container" style="z-index:99; padding-top:50px;">
-	<div class="row">	
-		
-		
+	<div class="row">
+	
 		<?php		
-		
-		$date1=date('Y-m-d');
-		$date1=strtotime($date1);
-		$date2=strtotime("+7 day", $date1);		
-		
-		$arr1 = array();
-		for ($i=$date1; $i<=$date2; $i+=86400)
-		{
-			array_push($arr1,date("Y-m-d", $i));  
+		if(isset($_REQUEST['submit']))
+		{				
+			$q10="select count(*) from booking where bk_tbid='".$_REQUEST['id']."' and bk_date='".$_REQUEST['res_date']."' and bk_slot='".$_REQUEST['tm_slot']."'";
+			$r10=db_query($q10);
+			$ro10=mysqli_fetch_assoc($r10);
+			
+			if($ro10['count(*)']>0)
+			{
+				?>
+				<div class="alert alert-danger">
+				  <strong>Sorry Table Already Booked In Slot <?php echo $_REQUEST['tm_slot'] ?> on Date <?php echo $_REQUEST['res_date'] ?>.</strong>
+				</div>
+				<?php
+			}
+			else
+			{
+						
+				$query="insert into booking(bk_tbid,bk_date,bk_slot,bk_name,bk_email,bk_phone,bk_addon) values ('".$_REQUEST['id']."','".$_REQUEST['res_date']."','".$_REQUEST['tm_slot']."','".$_REQUEST['name']."','".$_REQUEST['email']."','".$_REQUEST['number']."',now())";
+				if($result=db_query($query))
+				{
+				?>
+				<div class="alert alert-success">
+				  <strong>Booking Successful!</strong>
+				</div>
+				<?php
+				}
+				else
+				{
+				?>
+				<div class="alert alert-danger">
+				  <strong>Some Internal Error Occured!</strong>
+				</div>
+				<?php
+				}
+			}
 		}
+		?>
 		
+		
+		<?php
+					function getDatesFromRange($start, $end, $format = 'Y-m-d') 
+						{
+							$array = array();
+							$interval = new DateInterval('P1D');
+
+							$realEnd = new DateTime($end);
+							$realEnd->add($interval);
+
+							$period = new DatePeriod(new DateTime($start), $interval, $realEnd);
+
+							foreach($period as $date) 
+							{ 
+								$array[] = $date->format($format); 
+							}
+
+							return $array;
+						}
+
+						$date1=date('Y-m-d');
+						$date2=strtotime("+7 day", strtotime($date1));
+						$date2=date('Y-m-d',$date2);
+						$arr1=getDatesFromRange($date1, $date2);
+						//echo implode("<br><br>",$arr1);	
+						//echo"<br><br>";
 		?>
 		
 		
@@ -68,50 +151,6 @@ function menudisable()
 		
 		
 		<div class="col-sm-5">
-		<?php
-						if(isset($_REQUEST['submit']))
-						{
-							$query="insert into booking(bk_tbid,bk_date,bk_slot,bk_name,bk_email,bk_phone,bk_addon,bk_menu) values ('".$_REQUEST['id']."','".$_REQUEST['res_date']."','".$_REQUEST['tm_slot']."','".$_REQUEST['name']."','".$_REQUEST['email']."','".$_REQUEST['number']."',now(),'".$_REQUEST['menu']."')";
-							if($result=db_query($query))
-							{
-							
-							$q10="select * from booking order by bk_addon desc limit 1";
-							$r10=db_query($q10);
-							$ro10=mysqli_fetch_assoc($r10);
-							
-							//var_dump($_REQUEST);
-							
-							$q20="select * from menu";
-							$r20=db_query($q20);
-							while($ro20=mysqli_fetch_assoc($r20))
-							{
-								if($_REQUEST['menu'.$ro20['menu_id']]!='0')
-								{
-									$q30="insert into book_menu (bm_bkid,bm_itemid,bm_name,bm_category,bm_price,bm_qty,bm_addon) values ('".$ro10['bk_id']."','".$ro20['menu_id']."','".$ro20['menu_name']."','".$ro20['cat_name']."','".$ro20['menu_price']."','".$_REQUEST['menu'.$ro20['menu_id']]."',now())";
-									$r30=db_query($q30);
-								}
-							}						
-							
-							
-							?>
-							<div class="alert alert-success">
-							  <strong>Booking Successful!</strong>
-							</div>
-							<?php
-							}
-							else
-							{
-							?>
-							<div class="alert alert-danger">
-							  <strong>Some Internal Error Occured!</strong>
-							</div>
-							<?php
-							}
-	}
-	else
-	{
-	?>
-					 	
 			<form action="reserve.php" method="post">
 				<input type="text" name="name" required class="form" placeholder="First Name" />
 				<input type="email" name="email" required class="form" placeholder="Email" />
@@ -124,13 +163,10 @@ function menudisable()
 					<option value="1">6 PM to 8 PM</option>
 					<option value="2">8 PM to 10 PM</option>
 				</select>
-				
-				Do you want to select menu?
-								
-				<input type="radio" name="menu" value="Yes" checked="checked" onclick="menuenable();"><label for="Yes"> Yes</label> 
-				<input type="radio" name="menu" value="No" onclick="menudisable();"><label for="No"> No</label>
-				
-				
+				<input type="hidden" name="id" value="<?php echo $_REQUEST['id']; ?>" />
+				<input type="submit"  value="Book Now" name="submit" class="form"/>
+			</form>
+			
 			<img src="images/color.jpg" width="100" />
 		</div>
 		<div class="col-sm-5">
@@ -154,7 +190,7 @@ function menudisable()
 							<strong>Table for Person(s):</strong><br/><?php echo $row['tb_person']; ?>
 						</td>
 					</tr>				
-													
+															
 					</table>
 					</div>
 					
@@ -213,77 +249,9 @@ function menudisable()
 	</div>
 	
 	<div class="row">
-		<div class="menu">
 		
-	
-	<div class="col-sm-12" id="menuitems" style="background:#d2eafc;">	
 			
-	<div class="col-sm-12">
-	<h2 align="center" style="margin:15px 0px;">Menu Selection</h2>
-			<div style="margin-top: 15px;">
-			
-			<?php
-			$query="select * from category ";
-			$result=db_query($query);
-			while($row=mysqli_fetch_assoc($result))
-			{
-			?>			
-			<div id="cat<?php echo $row['cat_id']; ?>">
-			<table width="100%" style="font-size:14px; margin-bottom:10px;" border="1">					
-			<tr>
-				<td colspan="4"><h3><?php echo $row['cat_name'];?></h3> </td>				
-			</tr>
-			<?php
-				$q10="select * from menu where cat_name='".$row['cat_id']."'";
-				$r10=db_query($q10);
-				while($ro10=mysqli_fetch_assoc($r10))
-				{
-				?>
-				<tr>
-					<td width="30%"><?php echo $ro10['menu_name'];?></td>
-					<td width="50%"><?php echo $ro10['menu_desc'];?></td>
-					<td width="10%">$ <?php echo $ro10['menu_price'];?></td>
-					<td width="10%"> 
-					<select name="menu<?php echo $ro10['menu_id'];?>">
-					<?php
-					for($i=0;$i<=10;$i++)
-					{
-					?>
-					<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-					<?php
-					}
-					?>
-					</select>
-					</td>
-				</tr>
-				<?php }
-			?>
-			</table>
-			</div>
-			<?php } ?>	
-				
-			</div>
-			</div>
-			
-			<?php
-		}
-	?>			
-			
-	</div>
 	</div>
 	
 	
 </div>
-
-<?php
-if(isset($_REQUEST['submit']))
-{
-
-}
-else
-{
-?>
-<input type="hidden" name="id" value="<?php echo $_REQUEST['id']; ?>" />
-<input type="submit" value="Book Now" name="submit" class="form" style="margin-top:20px; background:#00c713; color:#fff; font-size:20px;"/>
-</form>	
-<?php } ?>

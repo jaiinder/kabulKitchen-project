@@ -55,13 +55,14 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav main-nav  clear navbar-right ">
                             <li><a class="navactive color_animation" href="#top">WELCOME</a></li>
-                            <li><a class="color_animation" href="index.php#story">WHY US</a></li>
-                            <li><a class="color_animation" href="index.php#pricing">PRICING</a></li>
-							<li><a class="color_animation" href="homedelivery.php">HOME DELIVERY</a></li>
-                            <li><a class="color_animation" href="menu.php">MENU</a></li>
-                            <li><a class="color_animation" href="index.php#featured">FEATURED</a></li>
-                            <li><a class="color_animation" href="index.php#reservation">RESERVATION</a></li>
-                            <li><a class="color_animation" href="index.php#contact">CONTACT</a></li>
+                            <li><a class="color_animation" href="#story">WHY US</a></li>
+                            <li><a class="color_animation" href="#pricing">PRICING</a></li>
+                            
+                    <!--<li><a class="color_animation" href="#beer">BEER</a></li> -->
+                            <li><a class="color_animation" href="#bread">BREAD</a></li>
+                            <li><a class="color_animation" href="#featured">FEATURED</a></li>
+                            <li><a class="color_animation" href="#reservation">RESERVATION</a></li>
+                            <li><a class="color_animation" href="#contact">CONTACT</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </div>
