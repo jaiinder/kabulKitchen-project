@@ -1,3 +1,4 @@
+<?php include("config.php"); ?>
 <!DOCTYPE html>
 <html>
 
@@ -31,45 +32,7 @@
 		}
 		?>
 
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <div>
-                 	<button style="float:right; margin-right:10px; color:Red; background-color:white; border-radius:16px; border:1px solid blue; margin-top:-10px; padding:8px; font-family:Tahoma, Geneva, sans-serif; " ><a href="reservation.php" target="_blank" style=" text-decoration:none;color:Red;"> Sign-In</a></button>
-            </div>
-            <div class="container">
-            
-                <div class="row">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="#" style="margin-top:27px;">Kabul Kitchen</a>
-                        
-                    </div>
-                   
-
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav main-nav  clear navbar-right ">
-                            <li><a class="navactive color_animation" href="#top">WELCOME</a></li>
-                            <li><a class="color_animation" href="#story">WHY US</a></li>
-                            <li><a class="color_animation" href="#pricing">PRICING</a></li>
-                            
-                    <!--<li><a class="color_animation" href="#beer">BEER</a></li> -->
-                            <li><a class="color_animation" href="#bread">BREAD</a></li>
-                            <li><a class="color_animation" href="#featured">FEATURED</a></li>
-                            <li><a class="color_animation" href="#reservation">RESERVATION</a></li>
-                            <li><a class="color_animation" href="#contact">CONTACT</a></li>
-                        </ul>
-                    </div><!-- /.navbar-collapse -->
-                </div>
-                
-            </div><!-- /.container-fluid -->
-             			
-        </nav>
+       <?php require('nav.php'); ?>
          
         <div id="top" class="starter_container bg">
             <div class="follow_container">
@@ -106,9 +69,9 @@
        <!-- ============ Pricing  ============= -->
 
 
-        <section id ="pricing" class="description_content">
+        <!--<section id ="pricing" class="description_content">
              <div class="pricing background_content">
-                <h1><span>Affordable</span> pricing</h1>
+                <h1>Affordable pricing</h1>
              </div>
             <div class="text-content container"> 
                 <div class="container">
@@ -120,70 +83,169 @@
                                 <li class="filter" data-filter="special">Special</li>
                                 <li class="filter" data-filter="desert">Desert</li>
                                 <li class="filter" data-filter="dinner">Dinner</li>
-                            </ul><!-- @end #filter-list -->    
+                            </ul><!-- @end #filter-list     
                            <ul id="portfolio">
                                 <li class="item breakfast"><img src="images/food_icon01.jpg" alt="1" >
-                                    <h2>Pizza.....$20</h2>
+                                    <h2>Pizza  $20</h2>
                                 </li>
 
                                 <li class="item dinner special"><img src="images/food_icon02.jpg" alt="2" >
-                                    <h2>Prawns Cutlet.....$20</h2>
+                                    <h2>Prawns Cutlet  $20</h2>
                                 </li>
                                 <li class="item dinner breakfast"><img src="images/food_icon03.jpg" alt="3" >
-                                    <h2>Spring Rolls.....$18</h2>
+                                    <h2>Spring Rolls  $18</h2>
                                 </li>
                                 <li class="item special"><img src="images/food_icon04.jpg" alt="4" >
-                                    <h2>Kabul Kabaab.....$15</h2>
+                                    <h2>Kabul Kabaab  $15</h2>
                                 </li>
                                 <li class="item dinner"><img src="images/food_icon05.jpg" alt="Food" >
-                                    <h2>Kabul Burger.....$20</h2>
+                                    <h2>Kabul Burger  $20</h2>
                                 </li>
                                 <li class="item special"><img src="images/food_icon06.jpg" alt="Food" >
-                                    <h2>Kheer.....$22</h2>
+                                    <h2>Kheer   $22</h2>
                                 </li>
                                 <li class="item desert"><img src="images/food_icon07.jpg" alt="Food" >
-                                    <h2>Fruit Salad.....$32</h2>
+                                    <h2>Fruit Salad  $32</h2>
                                 </li>
                                 <li class="item desert breakfast"><img src="images/food_icon08.jpg" alt="Food" >
-                                    <h2>Sweet Yogurt.....$38</h2>
+                                    <h2>Sweet Yogurt  $38</h2>
                                 </li>
-                            </ul><!-- @end #portfolio -->
-                        </div><!-- @end #w -->
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>  
-        </section>
-
-
-        <!-- ============ Our Beer  ============= 
-
+        </section> -->
+		
+		
+		<script type="text/javascript">
+		<?php
+		$query="select * from category ";
+		$result=db_query($query);
+		while($row=mysqli_fetch_assoc($result))
+		{
+		?>
+		function active<?php echo $row['cat_id']; ?>()
+		{
+			<?php
+			$q10="select * from category ";
+			$r10=db_query($q10);
+			while($ro10=mysqli_fetch_assoc($r10))
+			{
+			if($ro10['cat_id']==$row['cat_id'])
+			{
+			?>
+			document.getElementById('cat<?php echo $ro10['cat_id'] ?>').style.display="block";
+			document.getElementById('cathead<?php echo $ro10['cat_id'] ?>').style.backgroundColor="#f00";
+			<?php 
+			}
+			else
+			{
+			?>
+			document.getElementById('cat<?php echo $ro10['cat_id'] ?>').style.display="none";
+			document.getElementById('cathead<?php echo $ro10['cat_id'] ?>').style.backgroundColor="#000";
+			<?php 
+			}
+			} 
+			?>
+		}
+		<?php }?>
+		</script>
+		
+		<style type="text/css">
+		#menu-tbl td
+		{
+			padding:7px;
+		}
+		</style>
 
         <section id ="beer" class="description_content">
-            <div  class="beer background_content">
-                <h1>Great <span>Place</span> to enjoy</h1>
-            </div>
-            <div class="text-content container"> 
-                <div class="col-md-5">
-                   <div class="img-section">
-                       <img src="images/beer_spec.jpg" width="100%">
-                   </div>
-                </div>
-                <br>
-                <div class="col-md-6 col-md-offset-1">
-                    <h1>OUR BEER</h1>
-                    <div class="icon-beer fa-2x"></div>
-                    <p class="desc-text">Here at Restaurant we’re all about the love of beer. New and bold flavors enter our doors every week, and we can’t help but show them off. While we enjoy the classics, we’re always passionate about discovering something new, so stop by and experience our craft at its best.</p>
-                </div>
-            </div>
-        </section> -->
+		<div class="pricing background_content">
+                <h1>Affordable pricing</h1>
+             </div>
+		<div class="container" style="z-index:99; padding-top:100px;">
+		<div class="row">
+		
+		<h2 style="margin-bottom:20px;">MENU</h2>
+		
+		<div class="col-sm-3">			
+			<?php
+			$query="select * from category ";
+			$result=db_query($query);
+			while($row=mysqli_fetch_assoc($result))
+			{
+			?>			
+			<a href="#" onClick="active<?php echo $row['cat_id']; ?>();" style="text-decoration:none;">
+			<div id="cathead<?php echo $row['cat_id']; ?>" style="font-size:16px; margin-bottom:10px; text-align:left; background:<?php if($row['cat_id']==1) { echo "#f00"; } else { echo "#000;"; } ?>; color:#fff; padding:5px; font-family:Arial, Helvetica, sans-serif">
+				<?php echo $row['cat_name'];?>
+			</div>
+			</a>
+			<?php } ?>			
+				
+		</div>
+		
+		<div class="col-sm-9">
+			<?php
+			$query="select * from category ";
+			$result=db_query($query);
+			while($row=mysqli_fetch_assoc($result))
+			{
+			?>			
+			<div id="cat<?php echo $row['cat_id']; ?>" style="display:<?php if($row['cat_id']==1) { echo "block"; } else { echo "none;"; } ?>;">
+			<table id="menu-tbl" width="100%" style="font-size:14px;" border="1">					
+			<tr>
+				<td colspan="3"><h3><?php echo $row['cat_name'];?></h3> </td>				
+			</tr>
+			<?php
+				$q10="select * from menu where cat_name='".$row['cat_id']."'";
+				$r10=db_query($q10);
+				while($ro10=mysqli_fetch_assoc($r10))
+				{
+				?>
+				<tr>
+					<td width="30%"><?php echo $ro10['menu_name'];?></td>
+					<td width="55%"><?php echo $ro10['menu_desc'];?></td>
+					<td width="15%" style="font-size:20px; font-style:italic">$ <?php echo $ro10['menu_price'];?></td>
+				</tr>
+				<?php }
+			?>
+			</table>
+			</div>
+			<?php } ?>		
+		</div>
+		
+		<div style="clear:both; height:40px;"></div>
+		
+		<a href="#reservation">
+		<div class="col-sm-5" style="background:#23a002; color:#fff; padding:20px 0px;">
+			RESERVE TABLE WITH MENU SELECTION
+		</div>
+		</a>
+		
+		<div class="col-sm-2">			
+		</div>
+		
+		<a href="homedelivery.php" target="_blank">
+		<div class="col-sm-5" style="background:#23a002; color:#fff; padding:20px 0px;">
+			HOME DELIVERY
+		</div>
+		</a>
+		
+		
+		
+		
+		</div>
+		</div>
+            
+        </section> 
 
 
-       <!-- ============ Our Bread  ============= -->
+       
 
 
         <section id="bread" class=" description_content">
             <div  class="bread background_content">
-                <h1>Our Breakfast <span>Menu</span></h1>
+                <h1>Our Breakfast</h1>
             </div>
             <div class="text-content container"> 
                 <div class="col-md-6">
@@ -264,18 +326,53 @@
                             <!-- Left Inputs -->
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-lg-8 col-md-6 col-xs-12">
-                                        <div class="row">
-                                            <div class="col-lg-6 col-md-6 col-xs-6">
-                                                <!-- Name -->
+								
+								<h2 style="margin-top:-60px;">Now Reserve your Table Online</h2>
+                             
+                                        
+										<?php 
+											$query="select * from tables";
+											$result=db_query($query);
+											while($row=mysqli_fetch_assoc($result))
+											{
+										?>
+                                           <!-- <div class="col-sm-4 col-md-4 col-xs-" style="float:left; padding:20px; background:#ecc; margin:10px;">-->
+                                            <div class="col-sm-4" style="float:left; padding:20px;">
+												
+												
+												
+													<table align="center" style=" border:1px solid #ccc; ">
+														<tr>
+															<td style="padding:10px; margin-top:20px;">
+														<?php
+															
+																echo"<img src='admin/table_img/".$row['tb_img']."' style='max-width:100%;' />","<br>";
+																echo "<p style='margin-top:20px; font-weight:bold;'>", $row['tb_name'],"</p>";
+																echo "<p style='margin:10px 0px; font-size:13px;'> For Person(s) :",$row['tb_person'],"</p>";
+																//echo "<a href='reserve.php?id='".$row['tb_id']."'> <button type='submit' name='submit' style='float:none;'>Book Now</button></a>";
+														?>
+														<a style="text-decoration:none; text-align:center; float:none;" href="reserve.php?id=<?php echo $row['tb_id']; ?>"  class="text-center form-btn form-btn">
+															<!--<button type="submit"  >--> Book Now <!--</button>-->
+														</a>
+															<div style="clear:both;"></div>
+															</td>
+														</tr>
+													</table>
+													
+												
+											</div>
+											<?php
+												}
+											?>
+											   <!-- Name 
                                                 <input type="text" name="res_fname" id="first_name" required class="form" placeholder="First Name" />
                                                 <input type="text" name="res_lname" id="last_name" required class="form" placeholder="Last Name" />
                                                 <input type="text" name="res_state" id="state" required class="form" placeholder="State" />
-                                                <input type="date" name="res_date" id="datepicker" required class="form" placeholder="Reservation Date" style="line-height:100%;" min="<?php echo date('Y-m-d'); ?>" />
-                                            </div>
+                                                <input type="date" name="res_date" id="datepicker" required class="form" placeholder="Reservation Date" style="line-height:100%;" min="<?php //echo date('Y-m-d'); ?>" />-->
+                                          
 
-                                            <div class="col-lg-6 col-md-6 col-xs-6">
-                                                <!-- Name -->
+											<!--<div class="col-lg-6 col-md-6 col-xs-6">
+                                                
                                                 <input type="text" name="res_phone" id="phone" required class="form" placeholder="Phone" />
                                                 <input type="text" name="res_guest" id="guest" required class="form" placeholder="Guest Number" />
                                                 <input type="email" name="res_email" id="email" required class="form" placeholder="Email" />
@@ -283,22 +380,22 @@
                                             </div>
 
                                             <div class="col-xs-6 ">
-                                                <!-- Send Button -->
-                                                <button type="submit" id="submit" name="submit" class="text-center form-btn form-btn">Reserve</button> 
-                                            </div>
+                                                
+                                                <button type="submit" id="submit" name="submit" class="text-center form-btn form-btn">Book now</button> 
+                                            </div>-->
                                             
-                                        </div>
-                                    </div>
+                             
+                                 
                                     
-                                    <div class="col-lg-4 col-md-6 col-xs-12">
-                                        <!-- Message -->
+                                    <!--<div class="col-lg-4 col-md-6 col-xs-12">
+                                        
                                         <div class="right-text">
                                             <h2>Hours</h2><hr>
                                             <p>Monday to Friday: 7:30 AM - 9:30 PM</p>
                                             <p>Saturday & Sunday: 8:00 AM - 9:00 PM</p>
                                             
                                         </div>
-                                    </div>
+                                    </div>-->
                                 </div>
                             </div>
                             <!-- Clear -->
@@ -316,16 +413,27 @@
                 <div class="col-md-6">
                     <span class="social_heading">FOLLOW</span>
                     <ul class="social_icons">
-                        <li><a class="icon-twitter color_animation" href="#" target="_blank"></a></li>
-                        <li><a class="icon-github color_animation" href="#" target="_blank"></a></li>
-                        <li><a class="icon-linkedin color_animation" href="#" target="_blank"></a></li>
-                        <li><a class="icon-mail color_animation" href="#"></a></li>
+                        
+                        <a href="https://www.facebook.com"><img src="images/facebook.png" width="26" height="26" target="_blank"></a>
+                        <a href="https://www.twitter.com"><img src="images/twitter.png" width="25" height="25" target="_blank"></a>
+<a href="https://www.instagram.com"><img src="images/insta.jpg" target="_blank" width="25" height="25" ></a>
+
+                   
+          
+                        
+                        
+                        
                     </ul>
                 </div>
                 <div class="col-md-4">
                     <span class="social_heading">OR DIAL</span>
                     <span class="social_info"><a class="color_animation" href="tel:883-335-6524">0450785649</a></span>
                 </div>
+                <div class="right-text" style="color:blue;margin-left:10px;">
+                                            <h2 style="padding:10px 0 0 0;"><font color="#FFFFFF"> OPENING HOURS</h2><hr>
+                                            <p><font color="#0C0">Monday to Friday:<br> 7:30 AM - 9:30 PM</p><p><font style="color:#0C0; text-align:center;">Saturday & Sunday:<br> 8:00 AM - 9:00 PM</p>
+                                            
+                                        </div>
             </div>
         </section>
 
